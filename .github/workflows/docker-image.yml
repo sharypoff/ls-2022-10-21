@@ -13,6 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Login to Docker
+      run: echo ${{ DOCKER_TOKEN }} | docker login -u sharypoff --possword-stdin
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build -t sharypoff/ls-2022-10-21:${GITHUB_REF:11} -f Dockerfile .
+    - name: Pudh image to docker
+      run: docker push sharypoff/ls-2022-10-21:${GITHUB_REF:11}
