@@ -1,0 +1,26 @@
+Count: {{ passanger_count }}<br>
+From: {{ ticket.airport_from.name }}<br>
+To: {{ ticket.airport_to.name }}<br>
+Date direct: {{ ticket.direct_date_time | date:"d M Y" }}<br>
+Time direct: {{ ticket.direct_date_time | date:"H:i" }}<br>
+Date return: {{ ticket.get_return_date | default_if_none:"No return" }}<br>
+Time return: {{ ticket.get_return_time | default_if_none:"No return" }}<br>
+Amount: {{ ticket.amount }}<br>
+Amount: {{ ticket. }}<br>
+{% if ticket.passangerinfo_set.exists %}
+    <h1>Билет продан</h1>
+{% else %}
+
+{% if error %}
+    <h1>{{ error }}</h1>
+{% endif %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    {% for i in passanger_range %}
+        <h1>Пассажир {{ i }}</h1>
+        ФИО: <input name="firstname-{{ i }}" type="text"><br>
+    {% endfor %}
+    <input type="submit">
+</form>
+{% endif %}

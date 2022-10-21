@@ -1,0 +1,8 @@
+Лампа: <a href="{% url 'simplelamp_detail' lamp.id %}">{{ lamp }}</a><br>
+Адрес: {{ lamp.address }}<br>
+Влючена?: {{ lamp.is_switched_on }}<br>
+Тип лампы: {{ lamp.lamp_type }}<br>
+Мощность: {{ lamp.power | default_if_none:"Не указано" }}<br>
+Цветовая температора: {{ lamp.colorful_temperature | default_if_none:"Не указано" }}<br>
+Напряжение: {{ lamp.voltage | default_if_none:"Не указано" }}<br>
+Люстра: {{ lamp.chandelier | default_if_none:"Не указано" }}<br>
