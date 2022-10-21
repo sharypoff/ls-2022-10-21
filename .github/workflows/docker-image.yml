@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: Login to Docker
-      run: echo ${{ DOCKER_TOKEN }} | docker login -u sharypoff --possword-stdin
+      run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u sharypoff --possword-stdin
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker build -t sharypoff/ls-2022-10-21:${GITHUB_REF:11} -f Dockerfile .
