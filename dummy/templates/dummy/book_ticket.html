@@ -8,7 +8,7 @@ Time return: {{ ticket.get_return_time | default_if_none:"No return" }}<br>
 Amount: {{ ticket.amount }}<br>
 Amount: {{ ticket. }}<br>
 {% if ticket.passangerinfo_set.exists %}
-    <h1>Билет продан</h1>
+    <h1>Ticket sold</h1>
 {% else %}
 
 {% if error %}
@@ -18,8 +18,8 @@ Amount: {{ ticket. }}<br>
 <form action="" method="post">
     {% csrf_token %}
     {% for i in passanger_range %}
-        <h1>Пассажир {{ i }}</h1>
-        ФИО: <input name="firstname-{{ i }}" type="text"><br>
+        <h1>Passenger {{ i }}</h1>
+        Full name: <input name="firstname-{{ i }}" type="text"><br>
     {% endfor %}
     <input type="submit">
 </form>

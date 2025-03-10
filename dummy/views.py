@@ -66,7 +66,7 @@ def book_ticket(request, pk=None):
     if request.method == 'POST':
         try:
             if ticket.passangerinfo_set.exists():
-                raise ValadationError(error="Билет продан")
+                raise ValadationError(error="Ticket is sold")
             passengers = []
             i = 1
             while True:
@@ -74,7 +74,7 @@ def book_ticket(request, pk=None):
 
                 if firstname is not None:
                     if not firstname or len(firstname) > 100:
-                        raise ValadationError(error="Ошибка заполнения формы")
+                        raise ValadationError(error="Form filling error")
                     passengers.append(
                         {
                             "firstname": firstname,

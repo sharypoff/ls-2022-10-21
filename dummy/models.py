@@ -10,42 +10,42 @@ class BaseLamp(models.Model):
         FLOURESCENT = 4
 
     is_switched_on = models.BooleanField(
-        "Флаг включения",
+        "On/Off Flag",
         blank=True,
         null=False,
         default=False
     )
 
     address = models.CharField(
-        "Адрес",
+        "Address",
         max_length=200,
         blank=False,
         null=False,
         unique=True,
-        help_text="Уникальный адрес устройства"
+        help_text="Unique device address"
     )
 
     lamp_type = models.IntegerField(
-        "Тип",
+        "Type",
         choices=LampTypes.choices,
         blank=False,
         null=False
     )
 
     power = models.IntegerField(
-        "Мощность",
+        "Power",
         blank=True,
         null=True
     )
 
     colorful_temperature = models.IntegerField(
-        "Цветовая температура",
+        "Color Temperature",
         blank=True,
         null=True
     )
 
     voltage = models.IntegerField(
-        "Напряжение питания",
+        "Supply Voltage",
         blank=True,
         null=True
     )
@@ -80,7 +80,7 @@ class SimpleLamp(BaseLamp):
 
 class DimmableLamp(BaseLamp):
     level = models.IntegerField(
-        "Уровень яркости",
+        "Brightness Level",
         blank=True,
         null=True
     )
@@ -91,7 +91,7 @@ class DimmableLamp(BaseLamp):
 
 class Chandelier(models.Model):
     location = models.CharField(
-        "Размещение",
+        "Location",
         max_length=200,
         blank=False,
         null=False,
@@ -115,14 +115,14 @@ class Chandelier(models.Model):
 
 class Airport(models.Model):
     iata_code = models.CharField(
-        "IATA код аэропорта",
+        "IATA Airport Code",
         max_length=3,
         blank=False,
         null=False,
         unique=True
     )
     name = models.CharField(
-        "Название аэропорта",
+        "Airport Name",
         max_length=30,
         blank=False,
         null=False,
@@ -149,17 +149,17 @@ class Ticket(models.Model):
         null=False,
     )
     direct_date_time = models.DateTimeField(
-        "Дата / время вылета",
+        "Departure Date/Time",
         blank=False,
         null=False,
     )
     return_date_time = models.DateTimeField(
-        "Дата / время обратного вылета",
+        "Return Flight Date/Time",
         blank=True,
         null=True,
     )
     amount = models.DecimalField(
-        "Стоимость",
+        "Price",
         blank=False,
         null=False,
         decimal_places=2,
@@ -180,7 +180,7 @@ class Ticket(models.Model):
 
 class PassangerInfo(models.Model):
     firstname = models.CharField(
-        "Имя",
+        "First Name",
         max_length=30,
         blank=False,
         null=False,
